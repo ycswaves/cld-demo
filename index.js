@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
@@ -21,6 +22,10 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });
+
+// module.exports = { handler: serverless(app) };
+module.exports = app;
+module.exports.handler = serverless(app);
